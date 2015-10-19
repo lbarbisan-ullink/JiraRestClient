@@ -11,7 +11,6 @@ using RestSharp.Deserializers;
 namespace TechTalk.JiraRestClient
 {
     //JIRA REST API documentation: https://docs.atlassian.com/jira/REST/latest
-
     public class JiraClient<TIssueFields> : IJiraClient<TIssueFields> where TIssueFields : IssueFields, new()
     {
         private readonly string username;
@@ -167,6 +166,28 @@ namespace TechTalk.JiraRestClient
                 Trace.TraceError("GetIssue(issueRef) error: {0}", ex);
                 throw new JiraClientException("Could not load issue", ex);
             }
+        }
+
+        public JiraUser LoadUser(String user)
+        {
+            JiraUser jiraUser;
+            try
+            {
+                string str = string.Format("user/?username={0}", user);
+                IRestResponse restResponse = this.ExecuteRequest(this.CreateRequest(Method.GET, str));
+                this.AssertStatus(restResponse, HttpStatusCode.OK);
+                jiraUser = this.deserializer.Deserialize<JiraUser>(restResponse);
+            }
+            catch (Exception exception1)
+            {
+                Exception exception = exception1;
+                Trace.TraceError("GetIssue(issueRef) error: {0}", new object[]
+                {
+                    exception
+                });
+                throw new JiraClientException("Could not load issue", exception);
+            }
+            return jiraUser;
         }
 
         public Issue<TIssueFields> CreateIssue(String projectKey, String issueType, String summary)

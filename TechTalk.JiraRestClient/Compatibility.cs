@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 
@@ -109,6 +110,12 @@ namespace TechTalk.JiraRestClient
         public IEnumerable<Issue> EnumerateIssues(String projectKey, String issueType)
         {
             return client.EnumerateIssues(projectKey, issueType).Select(Issue.From);
+        }
+
+        public IEnumerable<Issue> EnumerateIssuesByQuery(String jqlQuery, String[] fields, Int32 startIndex)
+        {
+            var result = client.EnumerateIssuesByQuery(jqlQuery, fields, startIndex);
+            return result.Select(Issue.From);
         }
 
         [Obsolete("This method is no longer supported and might be removed in a later release.")]
@@ -247,6 +254,11 @@ namespace TechTalk.JiraRestClient
         {
             return client.GetServerInfo();
         }
+
+        public JiraUser LoadUser(string currentUser)
+        {
+            return client.LoadUser(currentUser);
+        }
     }
 
     public class Issue : Issue<IssueFields>
@@ -261,7 +273,7 @@ namespace TechTalk.JiraRestClient
                 expand = other.expand,
                 id = other.id,
                 key = other.key,
-                self = other.self,
+                self = other.self,                
                 fields = other.fields,
             };
         }

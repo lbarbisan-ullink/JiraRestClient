@@ -30,5 +30,8 @@ namespace TechTalk.JiraRestClient
         public List<Comment> comments { get; set; }
         public List<IssueLink> issuelinks { get; set; }
         public List<Attachment> attachment { get; set; }
+        public Issue<IssueFields> parent { get; set; }
+        public IssueType issuetype { get; set; }
+        public string customfield_21600 { get; set; }
     }
 }

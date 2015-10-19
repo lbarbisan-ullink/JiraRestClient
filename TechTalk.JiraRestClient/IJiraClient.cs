@@ -85,5 +85,7 @@ namespace TechTalk.JiraRestClient
 
         /// <summary>Returns information about the JIRA server</summary>
         ServerInfo GetServerInfo();
+
+        JiraUser LoadUser(string currentUser);
     }
 }
