@@ -32,6 +32,7 @@ namespace TechTalk.JiraRestClient
         public List<Attachment> attachment { get; set; }
         public Issue<IssueFields> parent { get; set; }
         public IssueType issuetype { get; set; }
+        public IssuePriority priority { get; set;}
         public string customfield_21600 { get; set; }
     }
 }

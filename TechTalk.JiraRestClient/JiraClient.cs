@@ -204,7 +204,7 @@ namespace TechTalk.JiraRestClient
 
                 var issueData = new Dictionary<string, object>();
                 issueData.Add("project", new { key = projectKey });
-                issueData.Add("issuetype", new { name = issueType });
+                issueData.Add("issuetype", new { id = issueType });
 
                 if (issueFields.summary != null)
                     issueData.Add("summary", issueFields.summary);
@@ -214,6 +214,8 @@ namespace TechTalk.JiraRestClient
                     issueData.Add("labels", issueFields.labels);
                 if (issueFields.timetracking != null)
                     issueData.Add("timetracking", new { originalEstimate = issueFields.timetracking.originalEstimate });
+                if (issueFields.parent != null)
+                    issueData.Add("parent", new { key = issueFields.parent.key });
 
                 var propertyList = typeof(TIssueFields).GetProperties().Where(p => p.Name.StartsWith("customfield_"));
                 foreach (var property in propertyList)
