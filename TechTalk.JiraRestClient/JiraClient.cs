@@ -212,10 +212,10 @@ namespace TechTalk.JiraRestClient
                     issueData.Add("description", issueFields.description);
                 if (issueFields.labels != null)
                     issueData.Add("labels", issueFields.labels);
+                if (issueFields.parent != null)
+                    issueData.Add("parent", issueFields.parent);
                 if (issueFields.timetracking != null)
                     issueData.Add("timetracking", new { originalEstimate = issueFields.timetracking.originalEstimate });
-                if (issueFields.parent != null)
-                    issueData.Add("parent", new { key = issueFields.parent.key });
 
                 var propertyList = typeof(TIssueFields).GetProperties().Where(p => p.Name.StartsWith("customfield_"));
                 foreach (var property in propertyList)
