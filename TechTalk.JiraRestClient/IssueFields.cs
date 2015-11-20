@@ -5,6 +5,8 @@ namespace TechTalk.JiraRestClient
 {
     public class IssueFields
     {
+        
+
         public IssueFields()
         {
             status = new Status();
@@ -33,6 +35,11 @@ namespace TechTalk.JiraRestClient
         public Issue<IssueFields> parent { get; set; }
         public IssueType issuetype { get; set; }
         public IssuePriority priority { get; set;}
+        //GLOBAL Rank
         public string customfield_21600 { get; set; }
+        //EPIC LINK
+        public string customfield_14700 { get; set; }
+        //EPIC Name
+        public string customfield_14701 { get; set; }
     }
 }
