@@ -5,7 +5,8 @@ namespace TechTalk.JiraRestClient
 {
     public class IssueFields
     {
-        
+        public DateTime started;
+
 
         public IssueFields()
         {
@@ -41,5 +42,7 @@ namespace TechTalk.JiraRestClient
         public string customfield_14700 { get; set; }
         //EPIC Name
         public string customfield_14701 { get; set; }
+        //Story Point
+        public decimal customfield_10790 { get; set; }
     }
 }
