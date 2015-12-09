@@ -43,6 +43,6 @@ namespace TechTalk.JiraRestClient
         //EPIC Name
         public string customfield_14701 { get; set; }
         //Story Point
-        public decimal customfield_10790 { get; set; }
+        public double customfield_10790 { get; set; }
     }
 }
