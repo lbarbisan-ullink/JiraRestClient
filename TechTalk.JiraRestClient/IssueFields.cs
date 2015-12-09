@@ -36,6 +36,19 @@ namespace TechTalk.JiraRestClient
         public Issue<IssueFields> parent { get; set; }
         public IssueType issuetype { get; set; }
         public IssuePriority priority { get; set;}
+        public string resolutiondate { get; set; }
+
+        public DateTime? ResolutionDateTime
+        {
+            get
+            {
+                if (resolutiondate == null)
+                    return null;
+                return new DateTime(int.Parse(resolutiondate.Substring(0, 4)),
+                                    int.Parse(resolutiondate.Substring(5, 2)),
+                                    int.Parse(resolutiondate.Substring(8, 2)));
+            }
+        }
         //GLOBAL Rank
         public string customfield_21600 { get; set; }
         //EPIC LINK
