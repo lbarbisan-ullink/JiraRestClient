@@ -190,6 +190,26 @@ namespace TechTalk.JiraRestClient
             return jiraUser;
         }
 
+        public IEnumerable<JiraVersion> GetVersions(string project)
+        {
+            try
+            {
+                var path = String.Format("project/{0}/versions", project);
+                var request = CreateRequest(Method.GET, path);
+
+                var response = ExecuteRequest(request);
+                AssertStatus(response, HttpStatusCode.OK);
+
+                var version = deserializer.Deserialize<List<JiraVersion>>(response);
+                return version;
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceError("GetVersions(project) error: {0}", ex);
+                throw new JiraClientException("Could not retrieve version", ex);
+            }
+        }
+
         public Issue<TIssueFields> CreateIssue(String projectKey, String issueType, String summary)
         {
             return CreateIssue(projectKey, issueType, new TIssueFields { summary = summary });

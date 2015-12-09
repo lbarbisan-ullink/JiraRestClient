@@ -259,6 +259,11 @@ namespace TechTalk.JiraRestClient
         {
             return client.LoadUser(currentUser);
         }
+
+        public IEnumerable<JiraVersion> GetVersions(string project)
+        {
+            return client.GetVersions(project);
+        }
     }
 
     public class Issue : Issue<IssueFields>

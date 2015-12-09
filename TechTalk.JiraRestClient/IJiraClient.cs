@@ -87,5 +87,6 @@ namespace TechTalk.JiraRestClient
         ServerInfo GetServerInfo();
 
         JiraUser LoadUser(string currentUser);
+        IEnumerable<JiraVersion> GetVersions(string project);
     }
 }

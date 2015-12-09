@@ -50,7 +50,9 @@
     <Compile Include="Compatibility.cs" />
     <Compile Include="IssuePriority.cs" />
     <Compile Include="IssueType.cs" />
+    <Compile Include="JiraVersion.cs" />
     <Compile Include="ServerInfo.cs" />
+    <Compile Include="VersionContainer.cs" />
     <Compile Include="WatchersContainer.cs" />
     <Compile Include="IJiraClient.cs" />
     <Compile Include="Issue.cs" />
