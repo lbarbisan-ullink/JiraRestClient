@@ -173,7 +173,7 @@ namespace TechTalk.JiraRestClient
             JiraUser jiraUser;
             try
             {
-                string str = string.Format("user/?username={0}", user);
+                string str = string.Format("user/?emailAddress={0}", user);
                 IRestResponse restResponse = this.ExecuteRequest(this.CreateRequest(Method.GET, str));
                 this.AssertStatus(restResponse, HttpStatusCode.OK);
                 jiraUser = this.deserializer.Deserialize<JiraUser>(restResponse);
